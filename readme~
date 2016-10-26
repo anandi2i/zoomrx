@@ -1,0 +1,5 @@
+To do List instructions
+
+1. index.html  - It is a root file to start the app
+2. Put the given folder in any local server like Apache or Python
+3. The app will be run only in the local server because of cross origin requests

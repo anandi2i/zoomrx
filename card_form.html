@@ -1,0 +1,55 @@
+<md-dialog flex="50">
+  <form ng-cloak>
+    <md-toolbar class="light-blue-bg">
+      <div class="md-toolbar-tools">
+        <h3>{{cardTitle}}</h3>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="deleteCard()">
+          <ng-md-icon icon="delete" style="fill:white;" size="15"></ng-md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <ng-md-icon icon="close" style="fill:white;" size="15"></ng-md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="column">
+        <form name="card-form">
+          <md-input-container>
+            <label>Card Title</label>
+            <input ng-model="selectedCard.title" maxlength="20">
+          </md-input-container>
+          <md-input-container>
+            <label>Description</label>
+            <input md-maxlength="30" ng-model="selectedCard.description" maxlength="30"/>
+          </md-input-container>
+
+          <div flex layout="row">
+            <md-input-container flex="100">
+              <label>Comment</label>
+              <input md-maxlength="30" ng-model="comment" maxlength="30"/>
+            </md-input-container>
+
+          </div>
+
+          <md-input-container>
+            <div ng-repeat="comment in selectedCard.comments" flex layout="row">
+              <div flex="25">{{comment.title}}</div>
+              <div flex>{{comment.created_at | date:'medium'}}</div>
+            </div>
+          </md-input-container>
+        </form>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">
+       CANCEL
+      </md-button>
+      <md-button ng-click="updateCard()">
+        UPDATE
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

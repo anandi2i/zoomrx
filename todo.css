@@ -1,0 +1,46 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1;
+  font-size: 13px;
+}
+.light-blue {
+  fill: rgba(0, 188, 212, 0.96);
+  color: rgba(0, 188, 212, 0.96);
+}
+.light-blue-bg {
+  background-color: rgba(0, 188, 212, 0.96) !important;
+}
+.board {
+  padding: 10px 0;
+}
+ng-md-icon:hover,
+.list-title:hover, .card-title:hover {
+  cursor: pointer;
+}
+ng-md-icon:focus, .list-title:focus, .card-title:focus {
+  outline: none;
+}
+.add-new-card:focus {
+  outline: none;
+}
+.add-new-card:hover {
+  cursor: pointer;
+}
+.m-t-18 {
+  margin-top: 18px;
+}
+.card {
+  min-height: 100px;
+  margin: 15px 0px;
+  padding: 10px;
+}
+.board-container {
+  margin-left: -10px;
+}
+.board-container .md-whiteframe-3dp {
+  margin: 0 10px;
+  padding: 10px;
+  min-height: 100px !important;
+  width: 170px;
+  overflow-y: auto;
+}

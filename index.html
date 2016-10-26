@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="todoApp">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script type="text/javascript" src="lib/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script src="lib/angular-material.min.js"></script>
+    <link rel="stylesheet" href="lib/angular-material.min.css">
+    <script src="lib/angular-animate.min.js"></script>
+    <script src="lib/angular-aria.min.js"></script>
+    <script src="lib/underscore-min.js"></script>
+    <script src="lib/sortable.js"></script>
+    <!-- NgMdIcons -->
+    <script src="lib/angular-material-icons.min.js"></script>
+    <script src="todo.js"></script>
+    <link rel="stylesheet" href="todo.css">
+  </head>
+  <body>
+    <div flex="90" flex-offset="5" ng-controller="TodoListController as toDoCtrl" ng-init="toDoCtrl.init()">
+      <div layout="row" flex class="board">
+        <h3 flex="80">Sample Board</h3>
+        <div flex layout="row" layout-align="end center">
+          <ng-md-icon icon="add_circle" class="light-blue" size="45" ng-click="toDoCtrl.addList()"></ng-md-icon>
+        </div>
+      </div>
+
+      <div ui-sortable layout="row" flex class="board-container">
+        <div ng-repeat="list in toDoCtrl.listItems track by list.listId" class="md-whiteframe-3dp">
+        	<div layout="row" flex>
+        		<div flex="90">
+        			<div ng-click="toDoCtrl.showDialog($event, list.listId)" class="list-title">{{list.title}}</div>
+        		</div>
+        		<div flex>
+        			<ng-md-icon icon="delete" size="15"style="fill:gray;" ng-click="toDoCtrl.deleteList(list.listId)"></ng-md-icon>
+        		</div>
+        	</div>
+        	<!-- //Card iteration -->
+        	<div ui-sortable>
+        		<div layout="row" ng-repeat="card in list.cards track by card.cardId" class="card md-whiteframe-2dp" flex>
+        			<div flex layout="row">
+        				<div flex="90" layout="column">
+        					<span ng-click="toDoCtrl.showDialog($event, list.listId, card.cardId)" class="card-title">{{card.title}}</span>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        	<!-- //Add New card -->
+        	<div layout="row" flex layout-align="end" class="m-t-18">
+        		<div ng-click="toDoCtrl.addCardToList(list.listId)" class="add-new-card" flex layout="row" layout-align="end">
+        			<ng-md-icon class="light-blue" icon="add_circle_outline" size="15"></ng-md-icon>
+        			&nbsp;<span>Add New Card<span>
+        		</div>
+        	</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
